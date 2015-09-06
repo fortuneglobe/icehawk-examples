@@ -61,7 +61,20 @@ $iceHawk->init();
 $iceHawk->handleRequest();
 ```
 
-## 3. Create request handlers on the read and write side
+## 3. Make sure the bootstrap handles all requests
+
+You need to configure your webserver so that all requests are handled by the bootstrap file.
+For an apache webserver e.g. put a `.htaccess` file into the document root (`src/public`).
+
+```
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* /index.php [L,QSA]
+```
+
+## 4. Create request handlers on the read and write side
 
  * Create an example domain folder: `src/Domains/Example`
  * Create a folder for each - read and write - side: 
@@ -113,7 +126,7 @@ final class WriteDataRequestHandler extends PostRequestHandler
 }
 ```
 
-## 4. Done. Fire some requests.
+## 5. Done. Fire some requests.
  
 Do a GET-Request to the following URL:
 
@@ -127,3 +140,7 @@ Do a POST-Request to the following URL:
  
 ... and you should see the output **"You are writing some data."**.
 
+
+----
+
+[Next chapter: Error and session handling »](../ErrorAndSessionHandling/README.md)
