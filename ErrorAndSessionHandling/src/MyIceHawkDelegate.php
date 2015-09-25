@@ -11,7 +11,7 @@ use Fortuneglobe\IceHawk\Responses\NotFound;
 
 final class MyIceHawkDelegate extends IceHawkDelegate
 {
-	public function configureErrorHandling()
+	public function setUpErrorHandling()
 	{
 		# Report and display all errors
 		error_reporting( E_ALL );
@@ -21,7 +21,7 @@ final class MyIceHawkDelegate extends IceHawkDelegate
 		# set_error_handler( [new MyErrorHandler(), 'handleErrors'] );
 	}
 
-	public function configureSession()
+	public function setUpSessionHandling()
 	{
 		# Redis session handler
 		ini_set( 'session.name', 'yoursid' );
@@ -35,6 +35,9 @@ final class MyIceHawkDelegate extends IceHawkDelegate
 		session_start();
 	}
 
+	/**
+	 * @param \Exception $exception
+	 */
 	public function handleUncaughtException( \Exception $exception )
 	{
 		try

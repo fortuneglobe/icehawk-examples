@@ -9,14 +9,8 @@
       "email": "email@example.com"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@gitlab.fortuneglobe.com:fortunesolutions/icehawk.git"
-    }
-  ],
   "require": {
-    "fortuneglobe/icehawk": "dev-release/going-public"
+    "fortuneglobe/icehawk": "1.3.0"
   },
   "autoload": {
     "psr-4": {
